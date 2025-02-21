@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradiant genarator</title>
+</head>
+<style>
+    body{
+        width: 100%;
+    height: 100vh;
+   background-image: linear-gradient(
+    to right top,
+    #051937,
+    #33a232,
+    #778833,
+    #c7d422,
+    #e34353,
+    #ff3411
+   );
+
+}
+
+.container{
+    background-color: transparent;
+    height: 10rem;
+    width:35rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    padding-left: 25%;
+    padding-top: 15%;
+    
+
+}
+.btn1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+    border-radius: 30px;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #fff;
+
+}
+  
+.btn2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    background-image: linear-gradient(to top, #D8D9DB 0%, #fff 80%, #FDFDFD 100%);
+    border-radius: 30px;
+    border: 1px solid #8F9092;
+    transition: all 0.2s ease;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #606060;
+    text-shadow: 0 1px #fff;
+  
+  
+  
+}
+
+.copy{
+    color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 20rem;
+    height: 3rem;
+    margin-left: 32%;
+    padding-top: 2rem;
+    background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+
+  border-radius: 1rem;
+  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 10px;
+  
+}
+
+h1{
+    display: block;
+    padding-left: 40%;
+    font-size: 0.8rem;
+    padding-top: 2rem;
+}
+</style>
+<body>
+    <div class="container">
+   <button class="btn1">#2343a2</button>
+   <button class="btn2">#234322</button>
+</div>
+    <h1>Click to copy your code</h1>
+<div class="copy">
+    background-image: linear-gradient(to right,rgb(22,a3,33),rgb(43,54,a2));
+
+</div>
+
+ <script>
+   
+   butn1 = document.querySelector(".btn1");
+   butn2 = document.querySelector(".btn2");
+   copyDiv = document.querySelector(".copy");
+
+   rgb1 = "rgb(22,a3,33)";
+   rgb2 = "rgb(43,54,a2)";
+
+    let genarator = () =>{
+     
+      let myColor = "0123456789abcdef"
+      colors = "#";
+
+      for(let i = 0;i< 6; i++){
+      colors = colors + (myColor[Math.floor(Math.random()*16)]);
+
+    } 
+    return colors 
+}
+  handleBtn = () =>{
+    rgb1 = genarator();
+    document.body.style.backgroundImage =  `linear-gradient(to right,${rgb1}, ${rgb2})`;
+    copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2}))`;
+    butn1.innerHTML = rgb1;
+
+
+  }
+  handleBtn2  = () =>{
+    rgb2 = genarator();
+    document.body.style.backgroundImage =  `linear-gradient(to right ,${rgb1}, ${rgb2})`;
+    copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2})`;
+    butn2.innerHTML = rgb2;
+
+
+  }
+
+    butn1.addEventListener("click",handleBtn);
+    butn2.addEventListener("click",handleBtn2);
+    copyDiv.addEventListener("click",()=>{
+        alert("sucessfully copied to clipboard")
+        navigator.clipboard.writeText(copyDiv.innerText)
+    });
+
+ </script>
+</body>
+</html>
